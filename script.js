@@ -38,8 +38,9 @@ function Marcar(casa, c) {
     
     if (numcasa == 1) {
         if (a11n == 0) {
+            JogadorM(casa) 
             a11n = 1
-            JogadorM(casa)           
+            Empate()                    
             if ((a11n == 1 && a12n == 1 && a13n == 1) || (a11n == 1 && a21n == 1 && a31n == 1) || (a11n == 1 && a22n == 1 && a33n == 1)){
                 Vitoria()
                 
@@ -193,8 +194,9 @@ function Marcar(casa, c) {
     }
     else if (numcasa == 2) {
         if (a12n == 0) {
+            JogadorM(casa)
             a12n = 1
-            JogadorM(casa)          
+            Empate()                    
             if ((a11n == 1 && a12n == 1 && a13n == 1) || (a12n == 1 && a22n == 1 && a32n == 1)){
                 Vitoria()
             }
@@ -357,6 +359,7 @@ function Marcar(casa, c) {
         if (a13n == 0) {
             JogadorM(casa)
             a13n = 1
+            Empate()
             if ((a11n == 1 && a12n == 1 && a13n == 1) || (a13n == 1 && a23n == 1 && a33n == 1) || (a31n == 1 && a22n == 1 && a13n == 1)){
                 Vitoria()
             }
@@ -513,6 +516,7 @@ function Marcar(casa, c) {
         if (a21n == 0) {
             JogadorM(casa)
             a21n = 1
+            Empate()
             if ((a21n == 1 && a22n == 1 && a23n == 1) || (a11n == 1 && a21n == 1 && a31n == 1)){
                 Vitoria()
             }
@@ -677,6 +681,7 @@ function Marcar(casa, c) {
         if (a22n == 0) {
             JogadorM(casa)
             a22n = 1
+            Empate()
             if ((a21n == 1 && a22n == 1 && a23n == 1) || (a12n == 1 && a22n == 1 && a32n == 1) || (a11n == 1 && a22n == 1 && a33n == 1) || (a31n == 1 && a22n == 1 && a13n == 1)){
                 Vitoria()
             }
@@ -825,6 +830,7 @@ function Marcar(casa, c) {
         if (a23n == 0) {
             JogadorM(casa)
             a23n = 1
+            Empate()
             if ((a21n == 1 && a22n == 1 && a23n == 1) || (a13n == 1 && a23n == 1 && a33n == 1)){
                 Vitoria()
             }
@@ -992,6 +998,7 @@ function Marcar(casa, c) {
         if (a31n == 0) {
             JogadorM(casa)
             a31n = 1
+            Empate()
             if ((a11n == 1 && a21n == 1 && a31n == 1) || (a31n == 1 && a32n == 1 && a33n == 1) || (a31n == 1 && a22n == 1 && a13n == 1)){
                 Vitoria()
             }
@@ -1149,6 +1156,7 @@ function Marcar(casa, c) {
         if (a32n == 0) {
             JogadorM(casa)
             a32n = 1
+            Empate()
             if ((a31n == 1 && a32n == 1 && a33n == 1) || (a12n == 1 && a22n == 1 && a32n == 1)){
                 Vitoria()
             }
@@ -1315,6 +1323,7 @@ function Marcar(casa, c) {
         if (a33n == 0) {
             JogadorM(casa)
             a33n = 1
+            Empate()
             if ((a31n == 1 && a32n == 1 && a33n == 1) || (a11n == 1 && a22n == 1 && a33n == 1) || (a13n == 1 && a23n == 1 && a33n == 1)){
                 Vitoria()
             }
@@ -1535,9 +1544,15 @@ function SomarPonto(nome) {
     else {
         pontoM ++
         Placar()
-    }
-        
+    } 
+
 }
 function Placar() {
     pont.innerHTML = `<p>${nome}: ${pontoJ}<br><br>Máquina: ${pontoM}</p>`
+}
+function Empate() {
+    if ((a11n == 1 || a11n == 2) && (a12n == 1 || a12n == 2) && (a13n == 1 || a13n == 2)  && (a21n == 1 || a21n == 2) && (a22n == 1 || a22n == 2) && (a23n == 1 || a23n == 2) && (a31n == 1 || a31n == 2) && (a32n == 1 || a32n == 2) && (a33n == 1 || a33n == 2)) {
+        res.innerHTML = '<p>EMPATE!</P>'
+        window.setTimeout (function () {LimparMudarCor(a11, a12, a13, a21, a22, a23, a31, a32, a33)}, 1500)
+    }
 }
